@@ -14,13 +14,14 @@ if (hello) {
   }
 }
 
+
 //  Changing tag text every few seconds
 const tagTexts = [
-  "Git & GitHub for Version Control",
-  "Clean Code & Best Practices",
-  "UI Magic & Smooth UX",
-  "JavaScript & React Developer",
-  "Innovation Through Code"
+  "Fine-Tuning Transformer Models for Arabic NLP",
+  "Building Safety-Focused LLM Agents",
+  "Django & Laravel Backend Engineering",
+  "Full-Stack JavaScript Development",
+  "Git & GitHub for Version Control"
 ];
 
 let tagIndex = 0;
@@ -65,7 +66,7 @@ function createSparkle() {
 setInterval(createSparkle, 500);
 
 //  Typewriter Effect
-const texts = ["Developer", "Designer", "Innovator", "Creator"];
+const texts = ["AI/ML Engineer", "NLP Engineer", "Backend Developer", "Full-Stack Developer"];
 let speed = 100;
 let textIndex = 0;
 let characterIndex = 0;
@@ -95,22 +96,20 @@ function eraseText() {
 }
 document.addEventListener("DOMContentLoaded", typeWriter);
 
-//  Orbit Icons
+//  Orbit Icons (matches verified tech stack from CV)
 const icons = [
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
 ];
 
 const orbit = document.getElementById("orbit");
@@ -139,8 +138,19 @@ if (orbit) {
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contact-form");
   const submitBtn = document.getElementById("submit-btn");
+  const statusMessage = document.getElementById("form-status-message");
 
   if (!form || !submitBtn) return;
+
+  function showStatus(text, type) {
+    if (!statusMessage) return;
+    statusMessage.textContent = text;
+    statusMessage.classList.remove("success", "error");
+    statusMessage.classList.add(type, "show");
+    setTimeout(() => {
+      statusMessage.classList.remove("show");
+    }, 5000);
+  }
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -163,13 +173,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (response.ok) {
-        alert("✅ Message sent successfully!");
+        showStatus("✅ Message sent successfully!", "success");
         form.reset();
       } else {
-        alert("❌ There was a problem sending your message.");
+        showStatus("❌ There was a problem sending your message.", "error");
       }
     } catch {
-      alert("⚠️ Network error. Please try again.");
+      showStatus("⚠️ Network error. Please try again.", "error");
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Send Message <i class="bi bi-send ms-2"></i>';
@@ -186,7 +196,12 @@ const chatInput = document.getElementById("chatbot-input");
 const chatMessages = document.getElementById("chatbot-messages");
 
 if (chatToggle && chatBox && closeChat && chatForm && chatInput && chatMessages) {
-  chatToggle.addEventListener("click", () => chatBox.classList.toggle("d-none"));
+  chatToggle.addEventListener("click", () => {
+    chatBox.classList.toggle("d-none");
+    if (!chatBox.classList.contains("d-none")) {
+      chatInput.focus();
+    }
+  });
   closeChat.addEventListener("click", () => chatBox.classList.add("d-none"));
 
   chatForm.addEventListener("submit", (e) => {
@@ -196,17 +211,32 @@ if (chatToggle && chatBox && closeChat && chatForm && chatInput && chatMessages)
 
     addMessage(message, "user");
     chatInput.value = "";
+    chatInput.disabled = true;
 
+    showTyping();
     setTimeout(() => {
+      hideTyping();
       const reply = getBotReply(message);
       addMessage(reply, "bot");
+      chatInput.disabled = false;
+      chatInput.focus();
     }, 700);
   });
 
+  bindChatOptionButtons();
+}
+
+function bindChatOptionButtons() {
   document.querySelectorAll(".chat-option").forEach((btn) => {
+    // Avoid double-binding the same button
+    if (btn.dataset.bound === "true") return;
+    btn.dataset.bound = "true";
+
     btn.addEventListener("click", () => {
       addMessage(btn.textContent, "user");
+      showTyping();
       setTimeout(() => {
+        hideTyping();
         addMessage(getBotReply(btn.textContent), "bot");
       }, 600);
     });
@@ -221,106 +251,209 @@ function addMessage(text, sender) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+function showTyping() {
+  const indicator = document.createElement("div");
+  indicator.classList.add("typing-indicator");
+  indicator.id = "typing-indicator";
+  indicator.innerHTML = "<span></span><span></span><span></span>";
+  chatMessages.appendChild(indicator);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function hideTyping() {
+  const indicator = document.getElementById("typing-indicator");
+  if (indicator) indicator.remove();
+}
+
 function getBotReply(input) {
   input = input.toLowerCase();
 
   if (input.includes("service"))
-    return " I offer: Personal Portfolio Websites , Business Sites , Blogs , UI/UX Design , SEO Optimization , Mobile Apps , and Chatbot Programming ";
+    return "I offer: AI & Machine Learning Solutions, Personal Portfolio Websites, Business Sites, UI/UX Design, SEO Optimization, and Chatbot Programming.";
 
   if (input.includes("skill"))
-    return " My skills include: HTML , CSS , JavaScript , React , Django , Tailwind , and Bootstrap !";
+    return "My skills span Python, PyTorch, Hugging Face Transformers, and LangChain for AI/ML; Django and Laravel for backend; JavaScript, HTML, CSS, and Tailwind for frontend; and PostgreSQL/MongoDB/MySQL for databases.";
+
+  if (input.includes("experience"))
+    return "I completed a Web & Software Development internship at Intellectsoft (Sétif, Algeria), working across the full development lifecycle. I'm currently a Master's candidate researching AI safety for Arabic LLM agents.";
+
+  if (input.includes("project"))
+    return "Some highlights: AMAN-LLM (my Master's thesis on AI safety for Arabic LLM agents), an Arabic Fiqh Information Retrieval system, and a full-stack real estate platform built with Django. Check the Projects section for more!";
 
   if (input.includes("about"))
-    return "👋 Hi! I’m Aya — a creative frontend developer with 5+ years of experience crafting elegant, responsive, and user-focused digital experiences ";
+    return "👋 Hi! I'm Aya — an AI/ML engineer and full-stack developer, currently pursuing a Master's in Data Engineering & Web Technologies with a research focus on AI safety and Arabic NLP.";
+
+  if (input.includes("hire") || input.includes("price") || input.includes("rate") || input.includes("cost"))
+    return "I'd love to hear about your project! Please reach out at ayadalache9@gmail.com or use the contact form below, and we can discuss scope and rates.";
 
   if (input.includes("contact"))
-    return " You can reach me anytime at: **dalacheaya635@gmail.com** ";
+    return "You can reach me anytime at: ayadalache9@gmail.com";
 
   if (["bye", "goodbye", "see you", "exit", "clear"].some(word => input.includes(word))) {
     setTimeout(() => clearChat(), 2500);
-    return "👋 Goodbye, friend! It was lovely chatting with you \n I’ll clear the chat in a moment...";
+    return "👋 Goodbye, friend! It was lovely chatting with you \nI'll clear the chat in a moment...";
   }
 
-  return "🤔 Hmm... I’m still learning! Try asking about  Services, Skills, About, or Contact ";
+  return "🤔 Hmm... I'm still learning! Try asking about Services, Skills, Experience, Projects, About, or Contact.";
 }
 
 function clearChat() {
   chatMessages.style.opacity = "0";
   setTimeout(() => {
-    chatMessages.innerHTML = `<div class="bot-message"> Chat cleared! I'm ready for a new conversation 💬</div>`;
+    chatMessages.innerHTML = `
+      <div class="bot-message">Chat cleared! I'm ready for a new conversation 💬</div>
+      <div class="chatbot-options">
+        <button class="chat-option">About you</button>
+        <button class="chat-option">Your skills</button>
+        <button class="chat-option">Your experience</button>
+        <button class="chat-option">Your services</button>
+        <button class="chat-option">Contact you</button>
+      </div>`;
     chatMessages.style.opacity = "1";
+    bindChatOptionButtons();
   }, 500);
 }
 
 
- // Projects data
+// Projects data — sourced from CV, categorized for filtering
 const projects = [
-    {
-        id: 1,
-        title: "A table & a chair",
-        description: "How to create a table and chair to learn the basics of Blender.",
-        previewImage: "images/Table_chair.png",
-        report: "files/project1-report.pdf",
-        animation: "files/project1-animation.mp4",
-        fullImage: "images/Table_chair.png",
-        blenderFile: "files/table.blend"
-    },
-    {
-        id: 2,
-        title: "A soft Body Physics(Balls)",
-        description: "How to use soft body physics to simulate objects like rubber balls.",
-        previewImage: "images/soft boddy.png",
-        report: "files/BallRepport.pdf",
-        animation: "files/ball.mp4",
-        fullImage: "images/soft boddy.png",
-        blenderFile: "files/Ball.blend"
-    },
-    {
-        id: 3,
-        title: "A realistic smoke simulation",
-        description: "How to create a stylized smoke effect using Blender 4 (using different settings and parameters).",
-        previewImage: "images/smoke_effect.png",
-        report: "files/SmokeReport.pdf",
-        animation: "files/smoke.mp4",
-        fullImage: "images/smoke_effect.png",
-        blenderFile: "files/smoke.blend"
-    }
+  {
+    title: "AMAN-LLM — Ethical Constraint Enforcement for Arabic LLM Agents",
+    category: "AI & NLP",
+    icon: "bi-shield-lock",
+    featured: true,
+    tech: ["Python", "PyTorch", "Transformers", "LangChain", "LangGraph"],
+    description: "Master's thesis: a multi-layer AI safety framework for Arabic-speaking LLM agents. Fine-tuned MARBERT and AraBERT for dialect-aware content moderation, reaching 91.6% F1-score, and built a 118-case adversarial benchmark.",
+    github: "https://github.com/ayadalache/aman-llm-agent"
+  },
+  {
+    title: "Arabic Fiqh Information Retrieval System",
+    category: "AI & NLP",
+    icon: "bi-search",
+    tech: ["Python", "Streamlit", "Transformers", "OCR"],
+    description: "End-to-end Arabic search engine integrating OCR, NLP preprocessing, positional indexing, TF-IDF ranking, and transformer-based classification, with Boolean, phrase, proximity, and ranked retrieval modes.",
+    github: "https://github.com/ayadalache/arabic-fiqh-ir-system"
+  },
+  {
+    title: "Face Recognition System",
+    category: "AI & NLP",
+    icon: "bi-camera",
+    tech: ["Python", "OpenCV", "Scikit-learn"],
+    description: "End-to-end face recognition pipeline using PCA-based feature extraction paired with supervised machine learning classifiers.",
+    github: "https://github.com/ayadalache/PCA-Face-Recognition"
+  },
+  {
+    title: "Machine Learning Regression Projects",
+    category: "AI & NLP",
+    icon: "bi-graph-up",
+    tech: ["Python", "PyTorch"],
+    description: "A collection of end-to-end regression models covering housing-price prediction and medical-cost estimation, including preprocessing, exploratory analysis, and evaluation.",
+    github: "https://github.com/ayadalache"
+  },
+  {
+    title: "BT Real Estate Platform",
+    category: "Full-Stack",
+    icon: "bi-building",
+    tech: ["Django", "Django REST Framework", "JWT", "REST APIs"],
+    description: "Full-stack real estate platform with secure JWT authentication, RESTful APIs, advanced property search, inquiry management, and role-based dashboards for customers and staff.",
+    github: "https://github.com/ayadalache/BT-Real-Estate-Full-Project"
+  },
+  {
+    title: "Sift — Task Management Application",
+    category: "Full-Stack",
+    icon: "bi-check2-square",
+    tech: ["Laravel", "Tailwind CSS"],
+    description: "Laravel-based task manager with secure authentication, ownership-based authorization, category management, dashboard analytics, and a custom Tailwind design system.",
+    github: "https://github.com/ayadalache/sift-real"
+  },
+  {
+    title: "Virtual Chemistry Lab 3D",
+    category: "Full-Stack",
+    icon: "bi-flask",
+    tech: ["Three.js", "WebGL", "PHP", "MySQL"],
+    description: "Educational web app simulating chemistry experiments in an interactive 3D lab, featuring role-based access, experiment recording, submission workflows, and instructor grading.",
+    github: "https://github.com/ayadalache/Virtual-Chemistry-Lab-3D"
+  },
+  {
+    title: "TasteBite — Desktop Recipe Manager",
+    category: "Full-Stack",
+    icon: "bi-egg-fried",
+    tech: ["Python", "Kivy"],
+    description: "Desktop recipe management application using a custom binary search tree for efficient indexing, with advanced search, recommendations, and persistent local storage.",
+    github: "https://github.com/ayadalache/tastebite"
+  },
+  {
+    title: "Ledger — Framework-Free JavaScript Task Manager",
+    category: "Systems & Performance",
+    icon: "bi-list-check",
+    tech: ["JavaScript", "IndexedDB", "Web Workers"],
+    description: "Task manager built in vanilla JavaScript with a command-pattern undo/redo engine and custom reactive state management, optimized with virtualized rendering, Web Workers, and IndexedDB persistence.",
+    github: "https://github.com/ayadalache/Ledger"
+  },
+  {
+    title: "TPC-H PostgreSQL Benchmark & Partitioning",
+    category: "Systems & Performance",
+    icon: "bi-hdd-stack",
+    tech: ["PostgreSQL", "Bash", "Linux"],
+    description: "Implemented and evaluated multiple PostgreSQL table-partitioning strategies, benchmarking analytical SQL workload performance using the TPC-H dataset.",
+    github: "https://github.com/ayadalache/tpch-postgresql-partitioning-project"
+  }
 ];
 
-// Function to load projects
-function loadProjects() {
-    const container = document.getElementById('projects-container');
-    
-    projects.forEach((project, index) => {
-        const projectCard = `
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="${(index + 1) * 100}">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="${project.previewImage}" alt="${project.title}" class="img-fluid">
-                    </div>
-                    <div class="project-content">
-                        <h4>${project.title}</h4>
-                        <p>${project.description}</p>
-                        <div class="project-buttons">
-                            <a href="${project.report}" class="btn btn-report" target="_blank" download>
-                                <i class="bi bi-file-text"></i> Report
-                            </a>
-                            <a href="${project.animation}" class="btn btn-animation" target="_blank">
-                                <i class="bi bi-play-circle"></i> Animation
-                            </a>
-                            <a href="${project.fullImage}" class="btn btn-image" target="_blank">
-                                <i class="bi bi-image"></i> Image
-                            </a>
-                            <a href="${project.blenderFile}" class="btn btn-blender" download>
-                                <i class="bi bi-box"></i> Blender File
-                            </a>
-                        </div>
-                    </div>
-                </div>
+const categoryClassMap = {
+  "AI & NLP": "category-ai",
+  "Full-Stack": "category-fullstack",
+  "Systems & Performance": "category-systems"
+};
+
+function renderProjects(filter = "all") {
+  const container = document.getElementById('projects-container');
+  if (!container) return;
+  container.innerHTML = "";
+
+  const filtered = filter === "all" ? projects : projects.filter(p => p.category === filter);
+
+  filtered.forEach((project, index) => {
+    const bannerClass = categoryClassMap[project.category] || "";
+    const featuredBadge = project.featured ? `<span class="project-featured-badge">Featured</span>` : "";
+    const techTags = project.tech.map(t => `<span>${t}</span>`).join("");
+
+    const projectCard = `
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="${(index % 3 + 1) * 100}">
+        <div class="project-card">
+          ${featuredBadge}
+          <div class="project-banner ${bannerClass}">
+            <i class="bi ${project.icon}"></i>
+          </div>
+          <div class="project-content">
+            <span class="project-category-badge">${project.category}</span>
+            <h4>${project.title}</h4>
+            <p>${project.description}</p>
+            <div class="project-tech-tags">${techTags}</div>
+            <div class="project-buttons">
+              <a href="${project.github}" class="btn-github" target="_blank" rel="noopener">
+                <i class="bi bi-github"></i> View on GitHub
+              </a>
             </div>
-        `;
-        container.innerHTML += projectCard;
+          </div>
+        </div>
+      </div>
+    `;
+    container.innerHTML += projectCard;
+  });
+
+  if (window.AOS) AOS.refreshHard();
+}
+
+function initProjectFilters() {
+  const buttons = document.querySelectorAll(".filter-btn");
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderProjects(btn.dataset.filter);
     });
+  });
 }
 
 // Initialize when page loads
@@ -331,35 +464,26 @@ document.addEventListener('DOMContentLoaded', function() {
         once: true,
         offset: 100
     });
-    
-    loadProjects(); // Add this line to load your projects
-    
-    // Your other initialization code (particles, etc.)
+
+    renderProjects();
+    initProjectFilters();
 });
 
 
-// Enhanced Script with Animations 
-   
-        // Initialize AOS (Animate On Scroll)
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                offset: 100
-            });
+// Enhanced Script with Animations
 
-            // Particle Background for Hero Section
+        // Particle Background for Hero Section
+        document.addEventListener('DOMContentLoaded', function() {
             const canvas = document.getElementById('particle-canvas');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
-                
+
                 // Set canvas size
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
-                
+
                 const particles = [];
-                
+
                 class Particle {
                     constructor() {
                         this.x = Math.random() * canvas.width;
@@ -368,17 +492,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         this.speedX = Math.random() * 1 - 0.5;
                         this.speedY = Math.random() * 1 - 0.5;
                     }
-                    
+
                     update() {
                         this.x += this.speedX;
                         this.y += this.speedY;
-                        
+
                         if (this.x > canvas.width) this.x = 0;
                         else if (this.x < 0) this.x = canvas.width;
                         if (this.y > canvas.height) this.y = 0;
                         else if (this.y < 0) this.y = canvas.height;
                     }
-                    
+
                     draw() {
                         ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
                         ctx.beginPath();
@@ -386,13 +510,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         ctx.fill();
                     }
                 }
-                
+
                 function init() {
                     for (let i = 0; i < 50; i++) {
                         particles.push(new Particle());
                     }
                 }
-                
+
                 function animate() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     for (let particle of particles) {
@@ -401,14 +525,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     requestAnimationFrame(animate);
                 }
-                
+
                 init();
                 animate();
-                
+
                 window.addEventListener('resize', function() {
                     canvas.width = window.innerWidth;
                     canvas.height = window.innerHeight;
                 });
             }
         });
-    

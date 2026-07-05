@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/747/747376.png">
 
-    <title>Aya Portfolio</title>
+    <title>Aya Dalache | AI / ML Engineer & Full-Stack Developer</title>
+    <meta name="description" content="Aya Dalache — AI/ML Engineer and Full-Stack Developer specializing in NLP, LLM safety, and backend systems.">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -15,10 +16,10 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- AOS Library for Scroll Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -42,16 +43,19 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#skills">Skills</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">W3D Projects</a>
+                        <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#certeficates">Certeficates</a>
+                        <a class="nav-link" href="#certificates">Certificates</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -65,17 +69,17 @@
  <section id="home" class="hero">
     <!-- Animated Background Canvas -->
     <canvas id="particle-canvas"></canvas>
-    
+
     <div class="container text-center">
       <h1 data-aos="fade-down" data-aos-delay="200">
         <span class="sprinkle">Hello</span> <br>
         I'm <span class="highlight " id="name">Dalache Aya</span>
       </h1>
 
-      <div class="tag" id="changingText" data-aos="fade-up" data-aos-delay="400">Git & GitHub for Version Control</div>
+      <div class="tag" id="changingText" data-aos="fade-up" data-aos-delay="400">Fine-Tuning Transformer Models for Arabic NLP</div>
 
       <p class="mt-3" data-aos="fade-up" data-aos-delay="600">
-        A Passionate Developer With A Love For Creating Dynamic And Interactive Visual Websites And Web Applications.
+        AI/ML Engineer and Full-Stack Developer building safety-focused LLM systems, NLP pipelines, and production-grade backend applications.
       </p>
     </div>
   </section>
@@ -85,32 +89,80 @@
   <div class="container">
     <h2 class="section-title text-center mb-5" data-aos="fade-down">About Me</h2>
     <div class="row align-items-center justify-content-center">
-      <div class="col-lg-6 text-center" data-aos="fade-right" data-aos-delay="200">
-  <img 
-    src="images/photo_2025-10-18_21-13-08.jpg" 
-    alt="Dalache Aya - Full Stack Developer" 
-    class="img-fluid about-img"
-    style="max-width: 320px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);"
-  >
-</div>
-      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="400">
+      <div class="col-lg-5 text-center" data-aos="fade-right" data-aos-delay="200">
+        <div class="avatar-badge">
+          <span>AD</span>
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
        <div class="typewriter">
           I am a <span class="typewriter-text"></span>
         </div>
-        <p class="text-center">
-          I'm a passionate fullstack developer with over 3 years of experience creating digital experiences. My expertise lies in developing responsive, user-friendly websites and applications.
+        <p class="about-text">
+          I'm a software engineer specializing in AI, machine learning, and NLP.I recently graduated with a Master's degree in Data Engineering & Web Technologies. My thesis focused on AI safety for Arabic-speaking LLM agents, combining transformer fine-tuning, adversarial testing, and constitutional AI techniques.
         </p>
-        <p class="text-center">
-          I specialize in HTML, CSS, JavaScript, and modern frameworks like React and Django. I'm always eager to take on new challenges and learn new technologies.
+        <p class="about-text">
+          Alongside my AI work, I build full-stack applications with Django, Laravel, and modern JavaScript — from REST APIs with JWT authentication to database-driven platforms benchmarked for performance. I enjoy taking systems from research prototype to measurable, production-ready implementation.
         </p>
-        <div class="text-center">
-          <a href="Aya_Dalache_Resume.pdf" class="btn btn-primary mt-3" download="Aya_Dalache_Resume.pdf" data-aos="zoom-in" data-aos-delay="600">Download CV</a>
+        <div class="text-center text-lg-start">
+          <a href="files/Aya_Dalache_CV.pdf" class="btn btn-primary mt-3" download="Aya_Dalache_CV.docx" data-aos="zoom-in" data-aos-delay="600">Download CV</a>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
+
+<!-- Experience & Education Section -->
+<section id="experience" class="experience-section py-5" style="background-color:white;">
+  <div class="container">
+    <h2 class="section-title text-center mb-5" data-aos="fade-down">Experience & Education</h2>
+    <div class="row justify-content-center gy-4">
+
+      <div class="col-md-6 col-lg-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="timeline-card">
+          <h3><i class="bi bi-briefcase-fill"></i> Professional Experience</h3>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <span class="timeline-role">Web & Software Development Intern</span>
+              <span class="timeline-date">2-Month Internship</span>
+            </div>
+            <span class="timeline-org">Intellectsoft — Sétif, Algeria</span>
+            <ul>
+              <li>Collaborated within a professional software development team in a production-oriented environment.</li>
+              <li>Worked across the full development lifecycle: requirements analysis, development, testing, and deployment.</li>
+              <li>Strengthened full-stack development skills using collaborative Git version-control workflows.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-5" data-aos="fade-up" data-aos-delay="200">
+        <div class="timeline-card">
+          <h3><i class="bi bi-mortarboard-fill"></i> Education</h3>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <span class="timeline-role">M.Sc. Data Engineering & Web Technologies</span>
+              <span class="timeline-date">2025 – 2026</span>
+            </div>
+            <span class="timeline-org">Ferhat Abbas University Sétif 1</span>
+            <ul>
+              <li>Thesis: <em>AMAN-LLM — Ethical Constraint Enforcement for Tool-Using Arabic LLM Agents</em></li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <span class="timeline-role">Licence. Computer Science</span>
+              <span class="timeline-date">2023 – 2024</span>
+            </div>
+            <span class="timeline-org">Ferhat Abbas University Sétif 1</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Skills Section -->
 <section id="skills" >
   <div class="container text-center">
@@ -119,12 +171,21 @@
   </div>
   <div class="container">
     <div class="cards">
-      <!-- Frontend -->
+      <!-- AI & Machine Learning -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
-        <h3><i class="fas fa-code"></i> Frontend Development</h3>
+        <h3><i class="fa-solid fa-brain"></i> AI & Machine Learning</h3>
         <div class="tags">
-          <span>React</span><span>JavaScript</span><span>HTML5</span>
-          <span>CSS3</span><span>Tailwind CSS</span><span>Bootstrap</span>
+          <span>PyTorch</span><span>TensorFlow</span><span>Scikit-learn</span>
+          <span>Hugging Face Transformers</span><span>LangChain</span><span>LangGraph</span>
+        </div>
+      </div>
+
+      <!-- NLP -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="150">
+        <h3><i class="fa-solid fa-language"></i> Natural Language Processing</h3>
+        <div class="tags">
+          <span>Arabic NLP</span><span>Information Retrieval</span><span>OCR</span>
+          <span>TF-IDF</span><span>Transformer Fine-Tuning</span>
         </div>
       </div>
 
@@ -132,37 +193,47 @@
       <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
         <h3><i class="fas fa-database"></i> Backend Development</h3>
         <div class="tags">
-          <span>Django</span><span>Laravel</span><span>PHP</span>
-          <span>MongoDB</span><span>REST APIs</span><span>Google Cloud</span>
+          <span>Python</span><span>Django</span><span>Django REST Framework</span>
+          <span>Laravel</span><span>PHP</span><span>REST APIs</span><span>JWT Auth</span>
+        </div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="250">
+        <h3><i class="fas fa-code"></i> Frontend Development</h3>
+        <div class="tags">
+          <span>JavaScript</span><span>HTML5</span>
+          <span>CSS3</span><span>Tailwind CSS</span><span>Bootstrap</span><span>Three.js</span>
+        </div>
+      </div>
+
+      <!-- Databases -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+        <h3><i class="fa-solid fa-server"></i> Databases</h3>
+        <div class="tags">
+          <span>PostgreSQL</span><span>MongoDB</span><span>MySQL</span>
+          <span>Oracle SQL / PL-SQL</span><span>SQLite</span>
+        </div>
+      </div>
+
+      <!-- DevOps & Tools -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="350">
+        <h3><i class="fa-solid fa-cloud"></i> DevOps & Tools</h3>
+        <div class="tags">
+          <span>Docker</span><span>Git</span><span>GitHub</span><span>Linux</span><span>npm / Vite</span>
         </div>
       </div>
 
       <!-- UI/UX -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
-        <h3><i class="fas fa-pencil-ruler"></i> UI/UX Design & Logo</h3>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+        <h3><i class="fas fa-pencil-ruler"></i> UI/UX Design</h3>
         <div class="tags">
           <span>Figma</span><span>Responsive Design</span>
-          <span>Wireframing</span><span>Prototyping</span>
-          <span>Adobe XD</span><span>Adobe Illustrator</span><span>Canva</span>
+          <span>Wireframing</span><span>Adobe XD</span><span>Canva</span>
         </div>
       </div>
 
-      <!-- Cloud & DevOps -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
-        <h3><i class="fa-solid fa-cloud"></i> Cloud & DevOps</h3>
-        <div class="tags">
-          <span>Git</span><span>GitHub</span><span>Linux</span><span>Google Analytics</span>
-        </div>
-      </div>
 
-      <!-- Creative Skills -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
-        <h3><i class="fa-solid fa-brush"></i> Creative Skills</h3>
-        <div class="tags">
-          <span>UI Animation</span><span>SVG Animation</span><span>3D Modeling</span>
-          <span>Graphic Design</span><span>Adobe XD</span><span>Adobe Illustrator</span><span>Canva</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -174,8 +245,26 @@
       <h2 class="stitle section-title" data-aos="fade-down">My Services</h2>
       <div class="row justify-content-center gy-4">
 
-        <!-- Card 2 -->
+        <!-- Card 1 -->
         <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="100">
+          <div class="service-card">
+            <i class="bi bi-cpu display-4"></i>
+            <h4>AI & Machine Learning Solutions</h4>
+            <p>Fine-tuning transformer models, building NLP pipelines, and designing safety-focused LLM agent systems.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="200">
+          <div class="service-card">
+            <i class="bi bi-building display-4"></i>
+            <h4>Business Website Development</h4>
+            <p>Building robust business websites with secure backend, payment flows, and admin dashboards tailored to your operations.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="300">
           <div class="service-card">
             <i class="bi bi-person-badge display-4"></i>
             <h4>Personal Portfolio Website</h4>
@@ -183,24 +272,7 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="200">
-          <div class="service-card">
-           <i class="bi bi-building display-4"></i>
-            <h4>Business Website Development</h4>
-            <p>Building robust business websites with secure backend, payment flows, and admin dashboards tailored to your operations.</p>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="300">
-          <div class="service-card">
-            <i class="bi bi-journal-text display-4"></i>
-            <h4>Blog & Content Platforms</h4>
-            <p>Creating blog platforms with clean layouts, optimized content flow, and easy publishing tools for creators and educators.</p>
-          </div>
-        </div>
-         <!-- Card 5-->
+         <!-- Card 4-->
          <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="400">
           <div class="service-card">
             <i class="bi bi-palette display-4"></i>
@@ -208,7 +280,7 @@
             <p>Designing intuitive, inclusive, and visually appealing interfaces that enhance user experience and engagement.</p>
           </div>
         </div>
-         <!-- Card 6 -->
+         <!-- Card 5 -->
          <div class="col-md-6 col-lg-3" data-aos="flip-right" data-aos-delay="500">
           <div class="service-card">
            <i class="bi bi-graph-up-arrow display-4"></i>
@@ -216,20 +288,13 @@
             <p>Improving search engine visibility and performance through clean, semantic, and accessible code practices.</p>
           </div>
         </div>
-         <!-- Card 7 -->
+
+         <!-- Card 6 -->
          <div class="col-md-6 col-lg-3" data-aos="flip-right" data-aos-delay="600">
-          <div class="service-card">
-            <i class="bi bi-phone display-4"></i>
-            <h4>Mobile Development</h4>
-            <p>Building cross-platform mobile applications with flutter for iOS and Android platforms.</p>
-          </div>
-        </div>
-         <!-- Card 8 -->
-         <div class="col-md-6 col-lg-3" data-aos="flip-right" data-aos-delay="700">
           <div class="service-card">
             <i class="bi bi-robot display-4"></i>
             <h4>Chatbot Programming</h4>
-            <p>Design and implement AI-powered chatbots for customer support, healthcare, education, or any specialty using NLP and deep learning models.</p>
+            <p>Designing and implementing AI-powered chatbots for customer support, healthcare, education, or any specialty using NLP and deep learning models.</p>
           </div>
         </div>
 
@@ -239,31 +304,46 @@
 
 
 <!-- Projects Section -->
-<!-- Projects Section -->
 <section id="projects" class="py-5" style="background-color:#f9f9fb;">
   <div class="container text-center">
-    <h2 class="section-title mb-4" data-aos="fade-down">My W3D Projects</h2>
+    <h2 class="section-title mb-3" data-aos="fade-down">Selected Projects</h2>
+    <p class="text-secondary mb-4">A selection of AI/ML, full-stack, and systems engineering projects. Filter by category below.</p>
+
+    <div class="project-filters mb-4" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="AI & NLP">AI & NLP</button>
+      <button class="filter-btn" data-filter="Full-Stack">Full-Stack</button>
+      <button class="filter-btn" data-filter="Systems & Performance">Systems & Performance</button>
+    </div>
+
     <div id="projects-container" class="row justify-content-center g-4">
       <!-- Projects will be loaded dynamically by JavaScript -->
     </div>
+
+    <p class="text-secondary mt-4 mb-0" data-aos="fade-up">
+      Additional projects: Quran & Bible Search Engine · Fraud Detection Model · Malicious URL Detection · Spam Classification —
+      <a href="https://github.com/ayadalache" target="_blank" rel="noopener">view more on GitHub</a>
+    </p>
   </div>
 </section>
 
 
-  <!-- Certeficates Section -->
-<section id="certeficates" class="certeficates-section">
+  <!-- Certificates Section -->
+<section id="certificates" class="certeficates-section">
   <div class="container">
-    <h2 class="section-title text-center mb-5" data-aos="fade-down">My Certeficates</h2>
-    <div class="scroll-container" data-aos="zoom-in" data-aos-delay="200">
+    <h2 class="section-title text-center mb-5" data-aos="fade-down">My Certificates</h2>
       <div class="scroll-content">
-        <img src="images/002.jpg" alt="Certificate 1">
-        <img src="images/003.jpg" alt="Certificate 2">
-        <img src="images/1.jpg" alt="Certificate 3">
-        <img src="images/3.jpg" alt="Certificate 4">
-        <img src="images/Aya Dalache _page-0001.jpg" alt="Certificate 5">
-        <img src="images/Aya Dalache_page-0001.jpg" alt="Certificate 6">
-        <img src="images/Aya_Dalache_page-0001 (1).jpg" alt="Certificate 7">
-      </div>
+          <img src="images/002.jpg" alt="Web Development Diploma - Meshkat Educational Foundation">
+          <img src="images/003.jpg" alt="Front-End Development - Tutori Land Online Academy">
+          <img src="images/1.jpg" alt="Django Framework Development Certificate">
+          <img src="images/3.jpg" alt="Laravel Framework Development Certificate">
+          <img src="images/Aya Dalache _page-0001.jpg" alt="Data Analysis, Machine Learning & Deep Learning Certificate">
+          <img src="images/Aya Dalache_page-0001.jpg" alt="Power BI Data Analysis & Visualization Certificate">
+          <img src="images/Aya_Dalache_page-0001 (1).jpg" alt="AI-Assisted Graphic Design Certificate">
+          <img src="images/aya-dalache_i_page-0001.jpg" alt="Web & Software Development Intern — Intellectsoft">  
+          <img src="images/o.jpg" alt="Hitan Certificate">
+          <img src="images/g.jpg" alt="ML Certificate">
+       </div>
     </div>
   </div>
 </section>
@@ -273,12 +353,12 @@
       <h2 class="section-title text-center mb-5" data-aos="fade-down">My Contact</h2>
   <div class="container">
     <div class="row justify-content-center align-items-start">
-      
+
       <!-- Left Side: Contact Info -->
       <div class="col-md-5 contact-info mb-4 mb-md-0" data-aos="fade-right" data-aos-delay="200">
         <h2 class="mb-3" style="color: black bold;">Get in Touch</h2>
         <p class="text-secondary mb-4">
-          Have a question or want to work together? Drop us a message!
+          Have a question or want to work together? Drop me a message!
         </p>
 
         <!-- Phone -->
@@ -290,7 +370,7 @@
         <!-- Email -->
         <div class="contact-item mb-3">
           <h5 class="mb-1"><i class="bi bi-envelope me-2" style="color:red;"></i>Email</h5>
-          <a href="mailto:dalacheaya635@gmail.com" class="text-decoration-none "style="color: #815ac0">dalacheaya635@gmail.com</a>
+          <a href="mailto:ayadalache9@gmail.com" class="text-decoration-none "style="color: #815ac0">ayadalache9@gmail.com </a>
         </div>
 
         <!-- LinkedIn -->
@@ -305,11 +385,7 @@
           <a href="https://github.com/ayadalache" target="_blank" class="text-decoration-none"style="color: #815ac0">Check Out My GitHub</a>
         </div>
 
-        <!-- Facebook -->
-        <div class="contact-item mb-3">
-          <h5 class="mb-1"><i class="bi bi-facebook me-2" style="color:#1877F2;"></i>Facebook</h5>
-          <a href="#" target="_blank" class="text-decoration-none"style="color: #815ac0">Check Out My Facebook</a>
-        </div>
+
       </div>
 
       <!-- Right Side: Contact Form -->
@@ -330,6 +406,7 @@
     <button type="submit" id="submit-btn" class="btn btn-send w-100">
       Send Message <i class="bi bi-send ms-2"></i>
     </button>
+    <div id="form-status-message" class="form-status-message"></div>
   </form>
 </div>
 
@@ -353,8 +430,9 @@
       </div>
       <div class="chatbot-options">
         <button class="chat-option">About you</button>
-        <button class="chat-option"> your skills</button>
-        <button class="chat-option"> your services</button>
+        <button class="chat-option">Your skills</button>
+        <button class="chat-option">Your experience</button>
+        <button class="chat-option">Your services</button>
         <button class="chat-option">Contact you</button>
       </div>
     </div>
@@ -368,13 +446,13 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AOS Library for Scroll Animations -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    
-    
-    
+
+
+
+
     <script src="script.js"></script>
 </body>
 </html>
